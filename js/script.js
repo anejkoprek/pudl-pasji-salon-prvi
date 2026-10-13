@@ -75,6 +75,17 @@ if (!brezGibanja) {
     trak.style.setProperty("--g-cas", Math.round(sirinaSlik * ponovitve / 35) + "s");
   });
   document.querySelector(".gallery")?.classList.add("g-marquee");
+  // Slike v traku se premikajo, zato jih brskalnik ne bi naložil pravočasno (lazy).
+  // Ko se obiskovalec približa galeriji, naložimo vse naenkrat.
+  const gal = document.querySelector(".gallery");
+  if (gal && "IntersectionObserver" in window) {
+    const nalozi = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      gal.querySelectorAll("img").forEach(img => { img.loading = "eager"; });
+      nalozi.disconnect();
+    }, { rootMargin: "800px 0px" });
+    nalozi.observe(gal);
+  }
 }
 
 const pokazi = i => {
