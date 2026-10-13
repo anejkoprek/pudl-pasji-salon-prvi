@@ -5,7 +5,13 @@
 const TELEFON = {
   prikaz: "041 313 011",      // kako se številka izpiše
   mednarodno: "+38641313011", // ista številka brez presledkov, s +386
-  smsBesedilo: "Pozdravljeni, rad/a bi se naročil/a na nego psa. Ime in pasma psa: "
+  // Besedilo, ki se ob kliku na "Pošlji SMS" samo vpiše v sporočilo (stranka dopolni podatke)
+  smsBesedilo:
+    "Pozdravljeni, rad/a bi naročil/a termin za nego psa.\n" +
+    "Ime in priimek: \n" +
+    "Ime in pasma psa: \n" +
+    "Želena storitev: \n" +
+    "Želeni dan: "
 };
 
 document.querySelectorAll(".js-tel").forEach(a => a.href = "tel:" + TELEFON.mednarodno);
@@ -143,3 +149,26 @@ if (gumbi.length && "IntersectionObserver" in window) {
 // ---------- Tekoče leto v nogi ----------
 const leto = document.getElementById("leto");
 if (leto) leto.textContent = new Date().getFullYear();
+
+// ---------- Ocene na telefonu: pikice pod karticami ----------
+const ocene = document.querySelector(".reviews");
+if (ocene && "IntersectionObserver" in window) {
+  const kartice = [...ocene.children];
+  const pike = document.createElement("div");
+  pike.className = "reviews-dots";
+  const gumbi = kartice.map((k, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("aria-label", "Ocena " + (i + 1) + " od " + kartice.length);
+    b.addEventListener("click", () => ocene.scrollTo({ left: k.offsetLeft - kartice[0].offsetLeft, behavior: "smooth" }));
+    pike.appendChild(b);
+    return b;
+  });
+  ocene.after(pike);
+  const io = new IntersectionObserver(vnosi => {
+    vnosi.forEach(v => {
+      if (v.isIntersecting) gumbi.forEach((b, i) => b.setAttribute("aria-current", kartice[i] === v.target));
+    });
+  }, { root: ocene, threshold: 0.6 });
+  kartice.forEach(k => io.observe(k));
+}

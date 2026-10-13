@@ -251,8 +251,8 @@ p { margin: 0; text-wrap: pretty; }
 
 /* Kartica z Mirjano, ki se prekriva s krogom (spodaj levo) */
 .hero-card {
-  position: absolute; left: -6%; bottom: 2%; margin: 0;
-  width: 40%; padding: .375rem; border-radius: 1.25rem;
+  position: absolute; left: -9%; bottom: 0; margin: 0;
+  width: 47%; padding: .375rem; border-radius: 1.25rem;
   background: #fff;
   box-shadow: 0 0 0 1px rgba(42,45,51,.06), 0 24px 40px -22px rgba(42,45,51,.45);
   transform: rotate(-4deg);
@@ -260,7 +260,7 @@ p { margin: 0; text-wrap: pretty; }
 .hero-card picture { display: block; aspect-ratio: 4 / 4.2; border-radius: .9rem; overflow: hidden; }
 .hero-card img { width: 100%; height: 100%; object-fit: cover; }
 .hero-card figcaption { display: flex; flex-direction: column; padding: .55rem .5rem .35rem; line-height: 1.25; }
-.hero-card strong { font-family: var(--f-display); font-weight: 600; font-size: 1rem; }
+.hero-card strong { font-family: var(--f-display); font-weight: 600; font-size: 1.08rem; }
 .hero-card span { color: var(--ink-soft); font-size: .85rem; }
 
 /* Dejstva pod prvim zaslonom */
@@ -357,8 +357,8 @@ p { margin: 0; text-wrap: pretty; }
 /* Galerija: nesimetrična mreža, napis pod sliko */
 .gallery {
   display: grid; gap: 1.125rem;
-  grid-template-columns: 1.35fr 1fr 1fr 1fr;
-  grid-template-rows: 26rem;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  grid-template-rows: 30rem;
 }
 .g-item { margin: 0; position: relative; display: flex; flex-direction: column; gap: 0.625rem; min-height: 0; }
 .g-open {
@@ -389,7 +389,7 @@ p { margin: 0; text-wrap: pretty; }
 .review {
   display: flex; flex-direction: column; justify-content: space-between; gap: 1.375rem;
   padding: 26px 28px; border-radius: var(--r-card);
-  background: var(--mist);
+  background: var(--yellow-soft);
 }
 .review-main {
   grid-row: span 2; padding: 2.5rem 2.5rem 2.125rem;
@@ -401,7 +401,8 @@ p { margin: 0; text-wrap: pretty; }
 .review-who { display: flex; flex-direction: column; font-size: .93rem; line-height: 1.4; }
 .review-who strong { color: var(--ink); font-weight: 600; }
 .review-who span { color: var(--ink-soft); }
-.review-main .review-who { padding-top: 18px; border-top: 2px solid var(--yellow); }
+.review .review-who { padding-top: 18px; border-top: 2px solid var(--yellow); }
+.reviews-dots { display: none; }
 
 /* O meni */
 .about { display: grid; grid-template-columns: .75fr 1.25fr; gap: 4rem; align-items: center; }
@@ -527,13 +528,13 @@ p { margin: 0; text-wrap: pretty; }
   .facts-list li:nth-child(3) { padding-left: 0; border-left: 0; }
   .facts-list li:nth-child(n+3) { border-top: 1px solid var(--line); }
   .hero-figure { order: -1; max-width: 22rem; margin: 0 auto; width: 100%; }
-  .hero-card { left: -10%; width: 38%; }
+  .hero-card { left: -12%; width: 46%; }
   .video-ring { margin: 0 auto; }
   .services-layout { grid-template-columns: 1fr; gap: 1.75rem; }
   .services-head { position: static; }
   .steps { grid-template-columns: repeat(2, 1fr); }
   .steps li::after { display: none; }
-  .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 24rem 24rem; }
+  .gallery { grid-template-columns: 1.2fr 1fr 1fr; grid-template-rows: 24rem; }
   .reviews { grid-template-columns: 1fr; }
   .review-main { grid-row: auto; }
   .about-photo { max-width: 21.25rem; }
@@ -573,8 +574,11 @@ p { margin: 0; text-wrap: pretty; }
   .section { padding: 3.25rem 0 3.5rem; }
   .wrap { padding: 0 1.125rem; }
   .hero-figure { max-width: 17rem; }
-  .hero-card { left: -12%; bottom: -2%; width: 42%; padding: .25rem; border-radius: .9rem; }
-  .hero-card figcaption { display: none; }
+  .hero-card { left: -15%; bottom: -4%; width: 54%; padding: .3rem; border-radius: 1rem; }
+  .hero-card picture { border-radius: .75rem; }
+  .hero-card figcaption { padding: .4rem .35rem .2rem; }
+  .hero-card strong { font-size: .95rem; }
+  .hero-card span { font-size: .8rem; }
   .facts-list { grid-template-columns: 1fr; }
   .facts-list li, .facts-list li + li { padding: .9rem 0; border-left: 0; }
   .facts-list li + li { border-top: 1px solid var(--line); }
@@ -582,7 +586,11 @@ p { margin: 0; text-wrap: pretty; }
   .services { grid-template-columns: 1fr; gap: 0; }
   .service { padding: 1.25rem 0; }
   .steps { grid-template-columns: 1fr; }
-  .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 17rem 17rem; gap: 0.875rem; }
+  .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: auto; gap: 1.125rem 0.875rem; align-items: start; }
+  .g-open { flex: none; aspect-ratio: 3 / 4; }
+  .g-item:first-child { grid-column: 1 / -1; }
+  .g-item:first-child .g-open { aspect-ratio: 4 / 3.4; }
+  .g-item figcaption { font-size: .86rem; line-height: 1.3; }
   .review, .review-main { padding: 1.5rem; }
   /* Cenik: na telefonu vsaka storitev svoja kartica, brez drsenja v stran */
   .table-scroll { overflow: visible; }
@@ -631,7 +639,7 @@ p { margin: 0; text-wrap: pretty; }
   /* Prvi zaslon: manjši krog, da sta naslov in gumb vidna takoj */
   .hero { padding: 1rem 0 2rem; }
   .hero-inner { gap: 1.25rem; }
-  .hero-figure { max-width: clamp(12.5rem, 60vw, 16rem); }
+  .hero-figure { max-width: clamp(13.5rem, 64vw, 16.5rem); transform: translateX(5%); }
   .hero h1 { font-size: clamp(2rem, 9vw, 2.5rem); }
   .hero-lead { margin-top: .875rem; font-size: 1.05rem; }
   .hero-actions { margin-top: 1.375rem; gap: .75rem 1.25rem; }
@@ -680,6 +688,16 @@ p { margin: 0; text-wrap: pretty; }
   .reviews::-webkit-scrollbar { display: none; }
   .review, .review-main { flex: 0 0 84%; scroll-snap-align: start; scroll-margin-left: 1.125rem; }
   .review-main blockquote p { font-size: 1.2rem; }
+  .reviews-dots { display: flex; justify-content: center; gap: .25rem; margin-top: .25rem; }
+  .reviews-dots button {
+    all: unset; cursor: pointer; width: 2.5rem; height: 2.5rem; display: grid; place-items: center;
+  }
+  .reviews-dots button::before {
+    content: ""; width: .5rem; height: .5rem; border-radius: 99px; background: rgba(42,45,51,.22);
+    transition: width .35s var(--ease), background-color .35s var(--ease);
+  }
+  .reviews-dots button[aria-current="true"]::before { width: 1.375rem; background: var(--red); }
+  .reviews-dots button:focus-visible::before { outline: 2px solid var(--red); outline-offset: 3px; }
 
   /* O meni: fotografija na sredini, ne čez cel zaslon */
   .about { gap: 1.75rem; }
