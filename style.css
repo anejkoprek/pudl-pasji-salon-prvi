@@ -624,6 +624,100 @@ p { margin: 0; text-wrap: pretty; }
   .footer-bottom { background-size: calc(100% - 2.25rem) 1px; }
 }
 
+/* ==========================================================
+   Telefon: krajša, preglednejša stran in večje tarče za prst
+   ========================================================== */
+@media (max-width: 760px) {
+  /* Prvi zaslon: manjši krog, da sta naslov in gumb vidna takoj */
+  .hero { padding: 1rem 0 2rem; }
+  .hero-inner { gap: 1.25rem; }
+  .hero-figure { max-width: clamp(12.5rem, 60vw, 16rem); }
+  .hero h1 { font-size: clamp(2rem, 9vw, 2.5rem); }
+  .hero-lead { margin-top: .875rem; font-size: 1.05rem; }
+  .hero-actions { margin-top: 1.375rem; gap: .75rem 1.25rem; }
+  .hero-kicker { margin-bottom: .625rem; font-size: .92rem; }
+
+  /* Dejstva: mreža 2 x 2 namesto štirih vrstic */
+  .facts { padding-bottom: .5rem; }
+  .facts-list { grid-template-columns: 1fr 1fr; }
+  .facts-list li, .facts-list li + li {
+    flex-direction: column; align-items: flex-start; gap: .5rem;
+    padding: 1rem .75rem 1rem 0; border: 0;
+  }
+  .facts-list li:nth-child(even) { padding-left: 1rem; border-left: 1px solid var(--line); }
+  .facts-list li:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .facts-list svg { width: 2.4rem; height: 2.4rem; padding: .5rem; }
+  .facts-list strong { font-size: .98rem; }
+  .facts-list span { font-size: .86rem; }
+
+  /* Storitve: ikona levo, besedilo desno */
+  .services-layout { gap: 1.25rem; }
+  .service {
+    display: grid; grid-template-columns: 2.75rem 1fr; column-gap: 1rem;
+    padding: 1.125rem 0;
+  }
+  .service svg { grid-row: span 2; width: 2.75rem; height: 2.75rem; padding: .6rem; margin: 0; }
+  .service h3 { align-self: end; }
+  .service p { margin-top: .2rem; font-size: .95rem; }
+
+  /* Koraki: številka levo, pikčasta črta navzdol do naslednjega koraka */
+  .steps { gap: 1.25rem; }
+  .steps li { padding: 0 0 0 3.5rem; min-height: 2.625rem; }
+  .steps li::before { width: 2.5rem; height: 2.5rem; }
+  .steps li:not(:last-child)::after {
+    display: block; top: 3rem; bottom: -1rem; left: 1.25rem; right: auto;
+    border-top: 0; border-left: 2px dotted rgba(224, 42, 27, .45);
+  }
+  .steps h3 { padding-top: .5rem; }
+
+  /* Ocene: vodoravno listanje s prstom, naslednja kartica pokuka izza roba */
+  .reviews {
+    display: flex; gap: .875rem;
+    overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    margin: 0 -1.125rem; padding: .25rem 1.125rem 1rem;
+    scrollbar-width: none;
+  }
+  .reviews::-webkit-scrollbar { display: none; }
+  .review, .review-main { flex: 0 0 84%; scroll-snap-align: start; scroll-margin-left: 1.125rem; }
+  .review-main blockquote p { font-size: 1.2rem; }
+
+  /* O meni: fotografija na sredini, ne čez cel zaslon */
+  .about { gap: 1.75rem; }
+  .about-photo { max-width: 17rem; margin: 0 auto; width: 100%; }
+
+  .footer-links { gap: 1.5rem; }
+  .map-placeholder small { font-size: .84rem; }
+
+  /* Demo trak v eni vrstici (pred objavo se itak odstrani) */
+  .demo-bar { flex-wrap: nowrap; gap: .5rem; padding: .375rem .75rem; font-size: .76rem; line-height: 1.3; text-align: left; }
+  .demo-bar button { flex: none; padding: .3rem .7rem; }
+}
+
+/* Naprave z dotikom (telefoni, tablice): večje tarče za prst, brez premika postavitve */
+@media (pointer: coarse) {
+  .text-link, .credit { padding: .7rem 0; margin: -.7rem 0; }
+  .tel-big { display: inline-block; padding: .45rem 0; margin: -.45rem 0; }
+  .footer-links a, .footer-bottom a:not(.credit) { display: inline-block; padding: .7rem .25rem; margin: -.7rem -.25rem; }
+  .demo-bar button { padding: .45rem 1rem; }
+  .brand { padding: .25rem 0; }
+}
+
+/* Ležeč telefon: krog in besedilo drug ob drugem, da je prvi zaslon uporaben */
+@media (orientation: landscape) and (max-height: 520px) {
+  :root { --header-h: 3.25rem; }
+  .site-header { top: .375rem; margin-top: .375rem; }
+  .brand-logo { height: 2.25rem; }
+  .hero { padding: 1.25rem 0 1.75rem; }
+  .hero-inner { grid-template-columns: 1.2fr .8fr; gap: 1.5rem; }
+  .hero-figure { order: 0; max-width: min(17rem, 68vh); margin: 0 auto; }
+  .hero h1 { font-size: clamp(1.8rem, 4.4vw, 2.4rem); }
+  .hero-lead { font-size: 1rem; margin-top: .75rem; }
+  .hero-actions { margin-top: 1.125rem; }
+  .facts-list { grid-template-columns: repeat(4, 1fr); }
+  .facts-list li:nth-child(n+3) { border-top: 0; }
+  .facts-list li:nth-child(3) { padding-left: 1rem; border-left: 1px solid var(--line); }
+}
+
 /* ---------- Podstrani (zasebnost, 404) ---------- */
 .subpage-header { padding: 1.5rem 0; }
 .subpage-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
