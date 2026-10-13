@@ -52,6 +52,31 @@ const lbCount = lb.querySelector(".lb-count");
 const galerija = [...document.querySelectorAll(".g-open")];
 let trenutna = 0;
 
+// Galerija: vsako vrsto podvojimo, da se trak vrti brez konca.
+// Kopije so skrite bralnikom zaslona in tipkovnici, klik nanje odpre isto sliko.
+const brezGibanja = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (!brezGibanja) {
+  document.querySelectorAll(".g-track").forEach(trak => {
+    const izvirniki = [...trak.children];
+    const sirinaSlik = trak.scrollWidth;
+    // Ena polovica traku mora biti vsaj tako široka kot zaslon, sicer bi na koncu ostala praznina
+    const ponovitve = Math.ceil(Math.max(trak.parentElement.clientWidth, screen.width) / sirinaSlik);
+    for (let k = 1; k < ponovitve * 2; k++) {
+      izvirniki.forEach(el => {
+        const kopija = el.cloneNode(true);
+        kopija.setAttribute("aria-hidden", "true");
+        const gumb = kopija.querySelector(".g-open");
+        gumb.tabIndex = -1;
+        gumb.addEventListener("click", () => el.querySelector(".g-open").click());
+        trak.appendChild(kopija);
+      });
+    }
+    // Enaka hitrost na vseh zaslonih: približno 35 pikslov na sekundo
+    trak.style.setProperty("--g-cas", Math.round(sirinaSlik * ponovitve / 35) + "s");
+  });
+  document.querySelector(".gallery")?.classList.add("g-marquee");
+}
+
 const pokazi = i => {
   trenutna = (i + galerija.length) % galerija.length;
   const btn = galerija[trenutna];

@@ -18,7 +18,7 @@
   <meta property="og:image" content="slike/pudelj-marelicni.jpg">
   <link rel="stylesheet" href="pisave.css">
   <link rel="stylesheet" href="js/lenis.css">
-  <link rel="stylesheet" href="style.css?v=20">
+  <link rel="stylesheet" href="style.css?v=21">
   <!-- Animacije samo, če obiskovalec nima vklopljenega "zmanjšaj gibanje" -->
   <script>if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("anim")</script>
   <link rel="icon" href="slike/logo.svg" type="image/svg+xml">
@@ -310,7 +310,7 @@
           </li>
           <li>
             <h3>Pokličem, ko je gotov</h3>
-            <p>Prevzamete urejenega, dišečega kužka. <span class="demo">Plačilo ob prevzemu.</span></p>
+            <p>Prevzamete urejenega, dišečega kužka.</p>
           </li>
         </ol>
       </div>
@@ -324,36 +324,87 @@
           <p>Nekaj kužkov, ki so bili pri nas na negi. Kliknite na sliko za večji prikaz.</p>
         </header>
 
-        <!-- UREDI: slike daj v mapo slike/ in zamenjaj src. Vsak <figure> je ena slika. -->
-        <div class="gallery">
-          <figure class="g-item"><button type="button" class="g-open" data-caption="Marelični pudelj po striženju">
-              <picture>
-                <source srcset="slike/pudelj-marelicni.webp" type="image/webp"><img decoding="async"
-                  src="slike/pudelj-marelicni.jpg" width="900" height="1200"
-                  alt="Rjavkast kodrast pudelj z okroglo pričesko na mizi v salonu" loading="lazy"
-                  style="object-position:50% 28%">
-              </picture>
-            </button>
-            <figcaption>Marelični pudelj</figcaption>
-          </figure>
-          <figure class="g-item"><button type="button" class="g-open" data-caption="Bel pudelj po striženju">
-              <picture>
-                <source srcset="slike/pudelj-po-strizenju.webp" type="image/webp"><img decoding="async"
-                  src="slike/pudelj-po-strizenju.jpg" width="703" height="937"
-                  alt="Bel pudelj po striženju na mizi v salonu" loading="lazy" style="object-position:50% 30%">
-              </picture>
-            </button>
-            <figcaption>Pudelj po striženju</figcaption>
-          </figure>
-          <figure class="g-item"><button type="button" class="g-open" data-caption="Mladiček pomskyja na prvem obisku">
-              <picture>
-                <source srcset="slike/pomsky-mladicek.webp" type="image/webp"><img decoding="async"
-                  src="slike/pomsky-mladicek.jpg" width="528" height="937"
-                  alt="Mladiček pomskyja sedi v salonu" loading="lazy" style="object-position:50% 22%">
-              </picture>
-            </button>
-            <figcaption>Mladiček pomsky</figcaption>
-          </figure>
+        <!-- UREDI: slike daj v mapo slike/ (.jpg in .webp). Vsak <figure> je ena slika.
+             Zgornja vrsta se pomika levo, spodnja desno. Kopije za neskončno listanje naredi js/script.js. -->
+      </div>
+      <div class="gallery">
+        <div class="g-row g-row-left">
+          <div class="g-track">
+              <figure class="g-item"><button type="button" class="g-open" data-caption="Marelični pudelj po striženju">
+                  <picture>
+                    <source srcset="slike/pudelj-marelicni.webp" type="image/webp"><img decoding="async" src="slike/pudelj-marelicni.jpg"
+                      width="900" height="1200" alt="Rjavkast kodrast pudelj z okroglo pričesko na mizi v salonu" loading="lazy" style="object-position:50% 28%">
+                  </picture>
+                </button>
+              </figure>
+              <figure class="g-item"><button type="button" class="g-open" data-caption="Črni in beli pudelj po negi">
+                  <picture>
+                    <source srcset="slike/pudlja-crni-beli.webp" type="image/webp"><img decoding="async" src="slike/pudlja-crni-beli.jpg"
+                      width="900" height="1200" alt="Velik črn in velik bel pudelj sedita pred vrati" loading="lazy" style="object-position:50% 35%">
+                  </picture>
+                </button>
+              </figure>
+              <figure class="g-item"><button type="button" class="g-open" data-caption="Beli špic po negi">
+                  <picture>
+                    <source srcset="slike/spic-beli.webp" type="image/webp"><img decoding="async" src="slike/spic-beli.jpg"
+                      width="900" height="1200" alt="Puhast bel špic sedi na mizi v salonu" loading="lazy" style="object-position:50% 30%">
+                  </picture>
+                </button>
+              </figure>
+              <figure class="g-item"><button type="button" class="g-open" data-caption="Okrogla pudljeva glavica">
+                  <picture>
+                    <source srcset="slike/pudelj-glavica.webp" type="image/webp"><img decoding="async" src="slike/pudelj-glavica.jpg"
+                      width="900" height="1200" alt="Rjav pudelj z okroglo ostriženo glavo" loading="lazy" style="object-position:50% 30%">
+                  </picture>
+                </button>
+              </figure>
+              <figure class="g-item"><button type="button" class="g-open" data-caption="Westieja po striženju">
+                  <picture>
+                    <source srcset="slike/westieja.webp" type="image/webp"><img decoding="async" src="slike/westieja.jpg"
+                      width="900" height="921" alt="Dva bela west highland terierja" loading="lazy" style="object-position:50% 40%">
+                  </picture>
+                </button>
+              </figure>
+          </div>
+        </div>
+        <div class="g-row g-row-right">
+          <div class="g-track">
+              <figure class="g-item"><button type="button" class="g-open" data-caption="Bel pudelj po striženju">
+                  <picture>
+                    <source srcset="slike/pudelj-po-strizenju.webp" type="image/webp"><img decoding="async" src="slike/pudelj-po-strizenju.jpg"
+                      width="703" height="937" alt="Bel pudelj po striženju na mizi v salonu" loading="lazy" style="object-position:50% 30%">
+                  </picture>
+                </button>
+              </figure>
+              <figure class="g-item"><button type="button" class="g-open" data-caption="Kavalir King Charles španjel">
+                  <picture>
+                    <source srcset="slike/kavalir.webp" type="image/webp"><img decoding="async" src="slike/kavalir.jpg"
+                      width="900" height="1200" alt="Kavalir španjel z dolgimi kodrastimi uhlji na mizi v salonu" loading="lazy" style="object-position:50% 30%">
+                  </picture>
+                </button>
+              </figure>
+              <figure class="g-item"><button type="button" class="g-open" data-caption="Rjav pudelj po striženju">
+                  <picture>
+                    <source srcset="slike/pudelj-rjavi.webp" type="image/webp"><img decoding="async" src="slike/pudelj-rjavi.jpg"
+                      width="900" height="1009" alt="Rjav kodrast pudelj z modro ovratnico gleda v kamero" loading="lazy" style="object-position:50% 35%">
+                  </picture>
+                </button>
+              </figure>
+              <figure class="g-item"><button type="button" class="g-open" data-caption="Mladiček pomskyja na prvem obisku">
+                  <picture>
+                    <source srcset="slike/pomsky-mladicek.webp" type="image/webp"><img decoding="async" src="slike/pomsky-mladicek.jpg"
+                      width="528" height="937" alt="Mladiček pomskyja sedi v salonu" loading="lazy" style="object-position:50% 22%">
+                  </picture>
+                </button>
+              </figure>
+              <figure class="g-item"><button type="button" class="g-open" data-caption="Črni pudelj po striženju">
+                  <picture>
+                    <source srcset="slike/pudelj-crni.webp" type="image/webp"><img decoding="async" src="slike/pudelj-crni.jpg"
+                      width="720" height="960" alt="Velik črn pudelj sedi na mizi v salonu" loading="lazy" style="object-position:50% 30%">
+                  </picture>
+                </button>
+              </figure>
+          </div>
         </div>
       </div>
     </section>
@@ -417,8 +468,7 @@
       <div class="wrap contact-inner">
         <div class="contact-text">
           <h2>Dogovorite se za termin</h2>
-          <p>Naročanje poteka po telefonu ali SMS. Če ravno strižem, mi pošljite SMS z imenom in pasmo psa. <span
-              class="demo">Odgovorim isti dan.</span></p>
+          <p>Naročanje poteka po telefonu ali SMS. Če ravno strižem, mi pošljite SMS z imenom in pasmo psa.</p>
 
           <dl class="contact-list">
             <div>
@@ -605,9 +655,9 @@
   <script src="js/ScrollTrigger.min.js"></script>
   <script src="js/SplitText.min.js"></script>
   <script src="js/lenis.min.js"></script>
-  <script src="js/script.js?v=20"></script>
-  <script src="js/devera.js?v=20"></script>
-  <script src="js/animacije.js?v=20"></script>
+  <script src="js/script.js?v=21"></script>
+  <script src="js/devera.js?v=21"></script>
+  <script src="js/animacije.js?v=21"></script>
 </body>
 
 </html>

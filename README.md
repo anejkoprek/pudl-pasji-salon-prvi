@@ -7,11 +7,11 @@ Odpri `index.html` v brskalniku ali v VS Code z razširitvijo **Live Server**.
 - **Telefon** (041 313 011, s Facebooka) → v `script.js`, objekt `TELEFON`
 - **Cene** → `index.html`, sekcija `#cenik`
 - **Delovni čas** → `index.html`, sekcija `#kontakt`
-- **Slike** → daj v mapo `slike/`, nato v galeriji zamenjaj `<span class="ph demo">slika X</span>` z `<img src="slike/ime.jpg" alt="opis">`
+- **Slike v galeriji** → dve vrsti, ki se sami pomikata (zgornja levo, spodnja desno). Novo sliko daš v `slike/` (.jpg in .webp) in v `index.html` kopiraš en `<figure class="g-item">` ter zamenjaš ime datoteke in napise. Za enakomeren trak naj ima vsaka vrsta približno enako slik.
 - **Besedilo "O meni"** → preveri z gospo
 - **Ocene strank** → v sekciji `#ocene` so IZMIŠLJENI primeri; pred objavo zamenjaj s pravimi (z dovoljenjem strank)
 - **Logotip** → začasni je v `slike/logo.svg`; ko pride pravi, ga samo prepiši z istim imenom
-- **Obljube, ki jih mora potrditi gospa** (rumeno): "Odgovorim isti dan", "Plačilo ob prevzemu", besedilo "O meni"
+- **Besedilo, ki ga mora potrditi gospa** (rumeno): "O meni", opis čiščenja ušes
 - **Zasebnost** → `zasebnost.html` je OSNUTEK; preberi ga z gospo in dopolni gostitelja strani
 
 Vsa mesta za urejanje so v kodi označena s komentarjem `UREDI`.

@@ -140,21 +140,13 @@
     });
   }
 
-  // ---------- Galerija: slike prihajajo + rahel parallax ----------
-  ScrollTrigger.batch(".g-item", {
-    start: "top 90%",
-    once: true,
-    onEnter: (els) =>
-      gsap.from(els, { y: 40, scale: 0.96, autoAlpha: 0, duration: 0.8, stagger: 0.08, ease: "power3.out" }),
-  });
-  if (desktop) {
-    gsap.utils.toArray(".g-open img").forEach((img) => {
-      gsap.fromTo(img, { yPercent: -6, scale: 1.12 }, {
-        yPercent: 6, ease: "none",
-        scrollTrigger: { trigger: img.closest(".g-item"), start: "top bottom", end: "bottom top", scrub: true },
-      });
+  // ---------- Galerija: vrsti prideta od strani (trak se nato vrti s CSS) ----------
+  gsap.utils.toArray(".g-row").forEach((vrsta, i) => {
+    gsap.from(vrsta, {
+      x: i % 2 ? -60 : 60, autoAlpha: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: vrsta, start: "top 90%", once: true },
     });
-  }
+  });
 
   // ---------- Ocene: kartice se dvignejo ena za drugo ----------
   ScrollTrigger.batch(".review", {
