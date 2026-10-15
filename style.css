@@ -183,7 +183,7 @@ p { margin: 0; text-wrap: pretty; }
   box-shadow: 0 0 0 1px var(--line), inset 0 1px 0 rgba(255,255,255,.9), 0 14px 30px -18px rgba(42,45,51,.45);
 }
 .brand { display: flex; align-items: center; text-decoration: none; margin-right: auto; }
-.brand-logo { height: 2.875rem; width: auto; }
+.brand-logo { height: 2.5rem; width: auto; }
 
 .main-nav ul { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
 .main-nav a {
@@ -328,14 +328,23 @@ p { margin: 0; text-wrap: pretty; }
 /* Cenik */
 .table-scroll { overflow-x: auto; }
 .prices { width: 100%; border-collapse: collapse; min-width: 560px; }
-.prices th, .prices td { padding: 0.9375rem 1.375rem; text-align: left; vertical-align: top; }
+.prices th, .prices td { padding: .5rem 1.25rem; text-align: left; vertical-align: middle; }
+#cenik .section-head { margin-bottom: 1.5rem; }
+/* Cenik na računalniku: naslov in opomba levo, tabela desno (manj drsenja) */
+@media (min-width: 1001px) {
+  #cenik .wrap { display: grid; grid-template-columns: 4fr 8fr; grid-template-rows: auto 1fr; column-gap: 3.5rem; align-items: start; }
+  #cenik .section-head { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+  #cenik .fineprint { grid-column: 1; grid-row: 2; margin-top: 1rem; }
+  #cenik .bezel { grid-column: 2; grid-row: 1 / span 2; }
+}
+.prices tbody small { display: inline; margin-left: .5rem; }
 .prices thead th { font-weight: 600; font-size: .93rem; color: var(--ink-soft); border-bottom: 1px solid var(--line); }
-.prices small { display: block; font-weight: 400; color: var(--ink-soft); font-size: .84rem; }
+.prices small { display: block; font-weight: 400; color: var(--ink-soft); font-size: .8rem; line-height: 1.3; }
 .prices tbody th { font-weight: 600; }
 .prices tbody tr { transition: background-color .25s var(--ease); }
 .prices tbody tr:nth-child(even) { background: #fafafb; }
 .prices tbody tr:hover { background: #fffaea; }
-.prices td { font-family: var(--f-display); font-weight: 600; font-size: 1.12rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.prices td { font-family: var(--f-display); font-weight: 600; font-size: 1.05rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .fineprint { margin-top: 1.125rem; font-size: .94rem; color: var(--ink-soft); max-width: 46em; }
 
 /* Koraki: resnično zaporedje, zato oštevilčeni */
@@ -464,7 +473,7 @@ p { margin: 0; text-wrap: pretty; }
 .site-footer { padding: 2.75rem 0 0; font-size: .92rem; color: var(--ink-soft); }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
 .footer-brand { display: flex; align-items: center; gap: 1.125rem; }
-.footer-logo { height: 2.875rem; width: auto; }
+.footer-logo { height: 3.25rem; width: auto; }
 .footer-name { color: var(--ink); font-weight: 600; }
 .footer-links { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.375rem; }
 .footer-links a { color: var(--ink); font-weight: 500; text-underline-offset: 3px; }
@@ -558,7 +567,7 @@ p { margin: 0; text-wrap: pretty; }
   :root { --header-h: 3.625rem; }
   .site-header { top: 0.5rem; margin-top: 0.5rem; padding: 0 0.5rem; }
   .header-inner { padding: 0 0.375rem 0 1rem; }
-  .brand-logo { height: 2.5rem; }
+  .brand-logo { height: 2.25rem; }
   .header-call { display: none; }
   .nav-toggle {
     display: grid; place-items: center; width: 2.875rem; height: 2.875rem;
@@ -602,23 +611,18 @@ p { margin: 0; text-wrap: pretty; }
   .g-row { --g-w: 10.5rem; padding: .5rem 0; -webkit-mask-image: none; mask-image: none; }
   .g-item { margin-right: .75rem; }
   .review, .review-main { padding: 1.5rem; }
-  /* Cenik: na telefonu vsaka storitev svoja kartica, brez drsenja v stran */
+  /* Cenik: na telefonu ostane tabela, le bolj zbita (glava z velikostmi samo enkrat) */
   .table-scroll { overflow: visible; }
-  .prices { min-width: 0; }
-  .prices thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-  .prices, .prices tbody, .prices tr, .prices th, .prices td { display: block; }
-  .prices tbody tr { padding: 1rem 1.125rem; }
-  .prices tbody tr + tr { border-top: 1px solid var(--line); }
-  .prices tbody tr:nth-child(even) { background: transparent; }
-  .prices tbody th { padding: 0 0 .5rem; font-size: 1.05rem; }
-  .prices td {
-    display: flex; justify-content: space-between; align-items: baseline;
-    padding: .3rem 0; font-size: 1.05rem;
-  }
-  .prices td::before {
-    content: attr(data-label);
-    font-family: var(--f-body); font-weight: 400; font-size: .92rem; color: var(--ink-soft);
-  }
+  .prices { min-width: 0; table-layout: fixed; }
+  .prices col.c-name { width: 46%; }
+  .prices th, .prices td { padding: .55rem .5rem; }
+  .prices tbody small { display: block; margin-left: 0; }
+  .prices th:first-child, .prices td:first-child { padding-left: .875rem; }
+  .prices thead th { font-size: .8rem; }
+  .prices tbody th { font-size: .92rem; line-height: 1.25; }
+  .prices small { font-size: .74rem; }
+  .prices td { font-size: .95rem; }
+  .prices td[colspan] { white-space: normal; }
   .contact { padding: 2.5rem 0 2.75rem; }
   .contact-list { grid-template-columns: 1fr; }
   .map { min-height: 17.5rem; }
@@ -734,7 +738,7 @@ p { margin: 0; text-wrap: pretty; }
 @media (orientation: landscape) and (max-height: 520px) {
   :root { --header-h: 3.25rem; }
   .site-header { top: .375rem; margin-top: .375rem; }
-  .brand-logo { height: 2.25rem; }
+  .brand-logo { height: 2rem; }
   .hero { padding: 1.25rem 0 1.75rem; }
   .hero-inner { grid-template-columns: 1.2fr .8fr; gap: 1.5rem; }
   .hero-figure { order: 0; max-width: min(17rem, 68vh); margin: 0 auto; }
@@ -757,6 +761,11 @@ p { margin: 0; text-wrap: pretty; }
 .subpage ul { padding-left: 1.25rem; }
 .subpage a { color: var(--ink); text-decoration-color: var(--red); text-underline-offset: 3px; }
 .subpage .lead { color: var(--ink-soft); font-size: 1.08rem; }
+.company-data { margin: 1.5rem 0 0; border-top: 1px solid var(--line); }
+.company-data div { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; padding: .75rem 0; border-bottom: 1px solid var(--line); }
+.company-data dt { color: var(--ink-soft); }
+.company-data dd { margin: 0; font-weight: 500; }
+@media (max-width: 560px) { .company-data div { grid-template-columns: 1fr; gap: .15rem; } }
 .notfound { min-height: 70svh; display: grid; place-items: center; text-align: center; padding: 3rem 0; }
 .notfound .wrap { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
 .notfound h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: -.035em; }

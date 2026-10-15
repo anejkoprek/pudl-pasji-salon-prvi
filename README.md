@@ -10,14 +10,17 @@ Odpri `index.html` v brskalniku ali v VS Code z razširitvijo **Live Server**.
 - **Slike v galeriji** → dve vrsti, ki se sami pomikata (zgornja levo, spodnja desno). Novo sliko daš v `slike/` (.jpg in .webp) in v `index.html` kopiraš en `<figure class="g-item">` ter zamenjaš ime datoteke in napise. Za enakomeren trak naj ima vsaka vrsta približno enako slik.
 - **Besedilo "O meni"** → preveri z gospo
 - **Ocene strank** → v sekciji `#ocene` so IZMIŠLJENI primeri; pred objavo zamenjaj s pravimi (z dovoljenjem strank)
-- **Logotip** → začasni je v `slike/logo.svg`; ko pride pravi, ga samo prepiši z istim imenom
+- **Logotip** → pravi logotip je v `slike/logo.svg`, ikona v zavihku brskalnika pa v `slike/favicon.svg` (pes in črka P)
 - **Besedilo, ki ga mora potrditi gospa** (rumeno): "O meni", opis čiščenja ušes
 - **Zasebnost** → `zasebnost.html` je OSNUTEK; preberi ga z gospo in dopolni gostitelja strani
 
 Vsa mesta za urejanje so v kodi označena s komentarjem `UREDI`.
 
-## Ko je stran končana
-Odstrani `<div class="demo-bar">` in razred `demo-mode` z `<body>`.
+## Stanje
+- Demo trak in oznake so odstranjeni, stran je pripravljena za objavo.
+- Ocene strank so SKRITE (`hidden` v sekciji `#ocene`), dokler ne dobimo pravih.
+- Podatki o podjetju (matična, davčna, e-pošta) so na `podatki.html`, ki je v nogi povezava in je Google ne prikazuje. E-pošta je v `js/podatki.js`.
+- Ko bo domena: v `index.html` vpiši polne naslove za `og:image` in `"image"`, dodaj `"url"` ter `sitemap.xml`.
 
 ## Barve in pisave
 Vse v `style.css`, blok `:root`. Ko dobimo logotip, uskladimo barve tam.
@@ -54,3 +57,9 @@ Vse v `style.css`, blok `:root`. Ko dobimo logotip, uskladimo barve tam.
 ## Devera Studio v nogi
 - Logotip: `slike/devera-logo.svg` (spodaj desno v nogi, tudi na `zasebnost.html`).
 - Ko bo stran Devera Studio na spletu, vpiši naslov v `js/devera.js` v vrstico `const DEVERA_URL = "";` in logotip postane povezava.
+
+## Varnost (Vercel)
+- `vercel.json`: varnostne glave, ki jih Vercel pošlje z vsako stranjo (prepoved vgrajevanja v tuje strani, samo lastne skripte ipd.).
+- `_headers` je ista nastavitev za Netlify; na Vercelu se ne uporablja (lahko jo zbrišeš).
+- Če dodaš zunanjo storitev (Google Analytics, Instagram, spletno naročanje), jo dodaj tudi v `Content-Security-Policy` v `vercel.json`, sicer je brskalnik ne naloži.
+- V HTML ne piši skript neposredno (`<script>...</script>`), ampak jih daj v datoteko v `js/`.

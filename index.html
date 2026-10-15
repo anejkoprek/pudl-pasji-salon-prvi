@@ -4,8 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Demo: Google naj strani ne indeksira. Odstrani ob objavi. -->
-  <meta name="robots" content="noindex, nofollow">
   <title>Pasji salon Pudl, nega in striženje psov na Ptuju</title>
   <meta name="description"
     content="Pasji salon Pudl na Ptuju: striženje, kopanje in nega psov vseh pasem. Od leta 2009. Termin dogovorite po telefonu ali SMS.">
@@ -18,10 +16,12 @@
   <meta property="og:image" content="slike/pudelj-marelicni.jpg">
   <link rel="stylesheet" href="pisave.css">
   <link rel="stylesheet" href="js/lenis.css">
-  <link rel="stylesheet" href="style.css?v=23">
+  <link rel="stylesheet" href="style.css?v=32">
   <!-- Animacije samo, če obiskovalec nima vklopljenega "zmanjšaj gibanje" -->
-  <script>if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("anim")</script>
-  <link rel="icon" href="slike/logo.svg" type="image/svg+xml">
+  <script src="js/zacetek.js"></script>
+  <link rel="icon" href="slike/favicon.svg?v=2" type="image/svg+xml">
+  <link rel="icon" href="slike/favicon-32.png?v=2" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="slike/apple-touch-icon.png">
   <!-- Podatki za Google (lokalno podjetje). Ko bo domena, dodaj "url". -->
   <script type="application/ld+json">
   {
@@ -45,23 +45,16 @@
   </script>
 </head>
 
-<body class="demo-mode">
+<body>
 
   <a class="skip-link" href="#vsebina">Preskoči na vsebino</a>
-
-  <!-- Trak, ki opozarja, da je to demo. Odstrani, ko je stran končana. -->
-  <div class="demo-bar" role="note">
-    <span>Demo verzija. <mark class="demo-key">Označena polja</mark> še čakajo prave podatke.</span>
-    <button type="button" id="toggle-demo">Skrij oznake</button>
-  </div>
 
   <span class="top-sentinel" aria-hidden="true"></span>
 
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="#top" aria-label="Pasji salon Pudl, na vrh strani">
-        <!-- UREDI: začasni logotip. Zamenjaj slike/logo.svg, ko gospa pošlje pravega. -->
-        <img class="brand-logo" src="slike/logo.svg" alt="Pudl pasji salon" width="80" height="59">
+        <img class="brand-logo" src="slike/logo.svg" alt="Pudl pasji salon" width="112" height="59">
       </a>
       <nav class="main-nav" aria-label="Glavni meni">
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list">
@@ -230,7 +223,7 @@
               <use href="#ico-uho" />
             </svg>
             <h3>Čiščenje ušes</h3>
-            <p class="demo-block">Nežno čiščenje ušes, da kuža ostane zdrav in brez neprijetnega vonja.</p>
+            <p>Nežno čiščenje ušes, da kuža ostane zdrav in brez neprijetnega vonja.</p>
           </li>
         </ul>
       </div>
@@ -244,48 +237,81 @@
           <p>Cena je odvisna od velikosti psa in stanja dlake. Točno ceno izveste ob naročilu.</p>
         </header>
 
-        <!-- UREDI: vpiši prave cene; vrstice lahko dodajaš ali brišeš -->
+        <!-- UREDI: cene po ceniku gospe, veljajo od 1. 1. 2026. -->
         <div class="bezel">
           <div class="bezel-core table-scroll">
             <table class="prices">
               <caption class="sr-only">Cene storitev glede na velikost psa</caption>
+              <colgroup><col class="c-name"><col><col><col></colgroup>
               <thead>
                 <tr>
                   <th scope="col">Storitev</th>
-                  <th scope="col">Majhen pes<small>do 10 kg</small></th>
-                  <th scope="col">Srednji pes<small>10 do 25 kg</small></th>
-                  <th scope="col">Velik pes<small>nad 25 kg</small></th>
+                  <th scope="col">Mali</th>
+                  <th scope="col">Srednji</th>
+                  <th scope="col">Veliki</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">Celotna nega<small>kopanje, striženje, kremplji, ušesa</small></th>
-                  <td data-label="Majhen pes"><span class="demo">00 €</span></td>
-                  <td data-label="Srednji pes"><span class="demo">00 €</span></td>
-                  <td data-label="Velik pes"><span class="demo">00 €</span></td>
+                  <th scope="row">Nega psa<small>kopanje, striženje, kremplji, ušesa</small></th>
+                  <td data-label="Mali">55 €</td>
+                  <td data-label="Srednji">65 €</td>
+                  <td data-label="Veliki">80 €</td>
                 </tr>
                 <tr>
-                  <th scope="row">Kopanje in sušenje</th>
-                  <td data-label="Majhen pes"><span class="demo">00 €</span></td>
-                  <td data-label="Srednji pes"><span class="demo">00 €</span></td>
-                  <td data-label="Velik pes"><span class="demo">00 €</span></td>
+                  <th scope="row">Striženje psa</th>
+                  <td data-label="Mali">35 €</td>
+                  <td data-label="Srednji">40 €</td>
+                  <td data-label="Veliki">50 €</td>
                 </tr>
                 <tr>
-                  <th scope="row">Trimanje</th>
-                  <td data-label="Majhen pes"><span class="demo">00 €</span></td>
-                  <td data-label="Srednji pes"><span class="demo">00 €</span></td>
-                  <td data-label="Velik pes"><span class="demo">00 €</span></td>
+                  <th scope="row">Kopanje psa<small>šampon in losjon</small></th>
+                  <td data-label="Mali">20 €</td>
+                  <td data-label="Srednji">25 €</td>
+                  <td data-label="Veliki">30 €</td>
+                </tr>
+                <tr>
+                  <th scope="row">Trimanje celega psa</th>
+                  <td data-label="Mali">40 €</td>
+                  <td data-label="Srednji">50 €</td>
+                  <td data-label="Veliki">60 €</td>
+                </tr>
+                <tr>
+                  <th scope="row">Česanje psa</th>
+                  <td data-label="Mali">20 €</td>
+                  <td data-label="Srednji">30 €</td>
+                  <td data-label="Veliki">50 €</td>
+                </tr>
+                <tr>
+                  <th scope="row">Nega ušes<small>čiščenje in odstranjevanje dlak</small></th>
+                  <td data-label="Mali">10 €</td>
+                  <td data-label="Srednji">15 €</td>
+                  <td data-label="Veliki">20 €</td>
                 </tr>
                 <tr>
                   <th scope="row">Krajšanje krempljev</th>
-                  <td colspan="3" data-label="Vse velikosti"><span class="demo">00 €</span></td>
+                  <td colspan="3" data-label="Vse velikosti">7 €</td>
+                </tr>
+                <tr>
+                  <th scope="row">Oblikovanje<small>glava, tačke</small></th>
+                  <td data-label="Mali">15 €</td>
+                  <td data-label="Srednji">20 €</td>
+                  <td data-label="Veliki">25 €</td>
+                </tr>
+                <tr>
+                  <th scope="row">Razvozlavanje psa<small>vključeno razčesavanje</small></th>
+                  <td colspan="3" data-label="Vse velikosti">35 do 70 € / uro</td>
+                </tr>
+                <tr>
+                  <th scope="row">Odstranjevanje poddlake</th>
+                  <td colspan="3" data-label="Vse velikosti">35 do 50 € / uro</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-        <p class="fineprint">Za močno zavozlano dlako ali posebej nemirne pse se cena lahko nekoliko poviša. O tem se
-          vedno dogovoriva vnaprej.</p>
+        <p class="fineprint">Vse cene so v evrih in veljajo od 1. 1. 2026. Za močno zavozlano dlako ali posebej nemirne
+          pse se cena lahko nekoliko poviša. O tem se vedno dogovoriva vnaprej.</p>
       </div>
     </section>
 
@@ -473,13 +499,13 @@
     </section>
 
     <!-- OCENE STRANK -->
-    <!-- UREDI: to so IZMIŠLJENI primeri za demo. Pred objavo jih zamenjaj z resničnimi
-         ocenami (npr. s Facebooka ali Googla) in z dovoljenjem strank. -->
-    <section class="section" id="ocene">
+    <!-- UREDI: sekcija je SKRITA (hidden), ker so spodaj izmišljeni primeri.
+         Ko dobiš prave ocene (npr. s Facebooka ali Googla, z dovoljenjem strank),
+         zamenjaj besedila in imena ter odstrani besedo hidden v vrstici spodaj. -->
+    <section class="section" id="ocene" hidden>
       <div class="wrap">
         <header class="section-head">
           <h2>Kaj pravijo lastniki</h2>
-          <p class="demo-note"><span class="demo">Primeri za demo. Tu bodo prave ocene strank.</span></p>
         </header>
         <ul class="reviews">
           <li class="review review-main">
@@ -517,9 +543,9 @@
         </div>
         <div class="about-text">
           <h2>Pozdravljeni, sem Mirjana</h2>
-          <p class="demo-block">Pasji salon Pudl vodim od leta 2009. Pri meni se je zvrstilo nešteto kužkov, od drobnih
+          <p>Pasji salon Pudl vodim od leta 2009. Pri meni se je zvrstilo nešteto kužkov, od drobnih
             čivavic do velikih kodrastih pudljev, po katerih je salon dobil ime.</p>
-          <p class="demo-block">Najpomembneje mi je, da se pes počuti varno. Zato psov med nego ne privezujem in delam z enim psom naenkrat, v miru in
+          <p>Najpomembneje mi je, da se pes počuti varno. Zato psov med nego ne privezujem in delam z enim psom naenkrat, v miru in
             brez sile. Marsikateri kuža, ki je prvič prišel prestrašen, danes pride z mahanjem repa.</p>
           <p class="about-sign">Mirjana Koprek</p>
         </div>
@@ -544,12 +570,8 @@
               <dd>Pot v toplice 9<br>2250 Ptuj</dd>
             </div>
             <div>
-              <dt>Delovni čas</dt>
-              <dd>
-                <!-- UREDI: delovni čas -->
-                <span class="demo">pon do pet: 8.00 do 16.00</span><br>
-                <span class="demo">sob: po dogovoru</span>
-              </dd>
+              <dt>Termini</dt>
+              <dd>Po dogovoru, brez fiksnega delovnega časa</dd>
             </div>
             <div>
               <dt>Facebook</dt>
@@ -598,11 +620,10 @@
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <div class="footer-brand">
-        <img class="footer-logo" src="slike/logo.svg" alt="" width="62" height="46" loading="lazy">
+        <img class="footer-logo" src="slike/logo.svg" alt="" width="88" height="46" loading="lazy">
         <div>
           <p class="footer-name">PASJI SALON PUDL, Mirjana Koprek s.p.</p>
           <p>Pot v toplice 9, 2250 Ptuj</p>
-          <p>Matična št. 3605159000, davčna št. 40215334</p>
         </div>
       </div>
       <ul class="footer-links">
@@ -612,8 +633,8 @@
     </div>
     <div class="wrap footer-bottom">
       <p>© <span id="leto">2026</span> Pasji salon Pudl. Vse pravice pridržane.</p>
-      <p><a href="zasebnost.html">Zasebnost</a></p>
-      <a class="credit" id="devera-link">
+      <p><a href="zasebnost.html">Zasebnost</a> · <a href="podatki.html">Podatki o podjetju</a></p>
+      <a class="credit" id="devera-link" href="https://deverastudio.com/" target="_blank" rel="noopener">
         <span>Izdelava strani</span>
         <img src="slike/devera-logo.svg" alt="Devera Studio" width="120" height="16" loading="lazy">
       </a>
@@ -718,9 +739,9 @@
   <script src="js/ScrollTrigger.min.js"></script>
   <script src="js/SplitText.min.js"></script>
   <script src="js/lenis.min.js"></script>
-  <script src="js/script.js?v=23"></script>
-  <script src="js/devera.js?v=23"></script>
-  <script src="js/animacije.js?v=23"></script>
+  <script src="js/script.js?v=32"></script>
+  <script src="js/devera.js?v=32"></script>
+  <script src="js/animacije.js?v=32"></script>
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 // Ko bo najina stran na spletu, vpiši naslov spodaj, npr. "https://devera.si",
 // in logotip postane klikljiv. Dokler je prazno, logotip ni povezava.
 // ==========================================================
-const DEVERA_URL = "";
+const DEVERA_URL = "https://deverastudio.com/";
 
 (function () {
   const link = document.getElementById("devera-link");
