@@ -479,11 +479,15 @@ p { margin: 0; text-wrap: pretty; }
 
 /* Logotip izdelovalca v nogi */
 .credit {
-  display: inline-flex; align-items: center; gap: .6rem;
-  color: var(--ink-soft); text-decoration: none;
+  display: inline-flex; align-items: center; gap: .75rem;
+  padding: .55rem .9rem .55rem 1rem; border-radius: 99px;
+  background: #fff; color: var(--ink-soft); text-decoration: none;
+  box-shadow: 0 0 0 1px var(--line), 0 10px 24px -14px rgba(42, 45, 51, .35);
+  transition: box-shadow .4s var(--ease), translate .4s var(--ease-spring);
 }
-.credit img { height: 1rem; width: auto; opacity: .75; transition: opacity .3s var(--ease); }
-.credit[href]:hover img { opacity: 1; }
+.credit span { font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; line-height: 1; }
+.credit img { height: 1.375rem; width: auto; }
+.credit[href]:hover { translate: 0 -2px; box-shadow: 0 0 0 2px var(--yellow), 0 14px 28px -14px rgba(42, 45, 51, .45); }
 .credit[href]:hover span { color: var(--ink); }
 
 /* Lightbox */
@@ -719,7 +723,7 @@ p { margin: 0; text-wrap: pretty; }
 
 /* Naprave z dotikom (telefoni, tablice): večje tarče za prst, brez premika postavitve */
 @media (pointer: coarse) {
-  .text-link, .credit { padding: .7rem 0; margin: -.7rem 0; }
+  .text-link { padding: .7rem 0; margin: -.7rem 0; }
   .tel-big { display: inline-block; padding: .45rem 0; margin: -.45rem 0; }
   .footer-links a, .footer-bottom a:not(.credit) { display: inline-block; padding: .7rem .25rem; margin: -.7rem -.25rem; }
   .demo-bar button { padding: .45rem 1rem; }
